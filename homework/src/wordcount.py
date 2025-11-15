@@ -23,6 +23,8 @@ def main():
                 for w in l.split( ):
                     w = w.lower().strip(",.!?")
                     counter[w] = counter.get(w, 0) + 1
+                    
+    write_word_count(counter)
 
     # create the directory output/ if it doesn't exist
 def write_word_count(counter):
