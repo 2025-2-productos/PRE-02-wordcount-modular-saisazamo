@@ -1,4 +1,5 @@
 # obtain a list of files in the input directory
+import sys
 
 from homework.src._internals.count_words import count_words
 from homework.src._internals.preprocess_lines import preprocess_lines
@@ -8,8 +9,13 @@ from homework.src._internals.write_word_counts import write_count_words
 
 
 def main():
-    input_folder = "data/input/"
-    output_folder = "data/output/"
+    
+    if len(sys.argv) < 3:
+        raise Exception("Usage: python -m homework <input_dir> <output_dir>")
+
+    ## Set input and output folder from command line arguments (sys.argv[0] is the script name)
+    input_folder = sys.argv[1]
+    output_folder = sys.argv[2]
     
     all_lines = read_all_lines(input_folder)
     all_lines = preprocess_lines(all_lines)
